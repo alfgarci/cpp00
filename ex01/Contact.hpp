@@ -7,22 +7,22 @@
 class Contact
 {
 	private:
-		std::string	_fisrt_name;
-		std::string	_last_name;
-		std::string	_nick_name;
+		std::string	_fisrtName;
+		std::string	_lastName;
+		std::string	_nickName;
 		std::string	_phone;
 		std::string	_secret;
 	public:
-		std::string	get_first_name(void) const;
-		std::string	get_last_name(void) const;
-		std::string	get_nick_name(void) const;
-		std::string	get_phone(void) const;
-		std::string	get_secret(void) const;
-		void		set_first_name(void) const;
-		void		set_last_name(void) const;
-		void		set_nick_name(void) const;
-		void		set_phone(void) const;
-		void		set_secret(void) const;
+		std::string	getFirstName(void) const;
+		std::string	getLastName(void) const;
+		std::string	getNickName(void) const;
+		std::string	getPhone(void) const;
+		std::string	getSecret(void) const;
+		void		setFirstName(std::string fisrtName);
+		void		setLastName(std::string lastName);
+		void		setNickName(std::string nickName);
+		void		setPhone(std::string phone);
+		void		setSecret(std::string secret);
 };
 
 #endif

@@ -23,6 +23,7 @@ class Contact
 		void		setNickName(std::string nickName);
 		void		setPhone(std::string phone);
 		void		setSecret(std::string secret);
+		void		showContact() const;
 };
 
 #endif

@@ -49,3 +49,12 @@ void	Contact::setSecret(std::string secret)
 {
 	this->_secret = secret;
 }
+
+void	Contact::showContact() const
+{
+	std::cout << "Fisrt Name: " << this->_fisrtName << std::endl;
+	std::cout << "Last Name: " << this->_lastName << std::endl;
+	std::cout << "Nick Name: " << this->_nickName << std::endl;
+	std::cout << "Phone: " << this->_phone << std::endl;
+	std::cout << "Darkest secret: " << this->_secret << std::endl;
+}

@@ -29,7 +29,7 @@ std::string	PhoneBook::_rightAlignedStr(std::string str) const
 			newStr += " ";
 		newStr += str;
 	}
-	return (str);
+	return (newStr);
 }
 
 std::string	PhoneBook::_askValidInput(std::string ask) const
@@ -45,7 +45,6 @@ std::string	PhoneBook::_askValidInput(std::string ask) const
 		std::cin >> entrade;
 		std::cout << std::endl;
 	}
-	std::cout << std::endl;
 	return (entrade);
 }
 
@@ -57,15 +56,21 @@ void	PhoneBook::addContact(void)
 	_phoneBook[i % 8].setFirstName(_askValidInput("Enter fisrt name> "));
 	_phoneBook[i % 8].setLastName(_askValidInput("Enter last name> "));
 	_phoneBook[i % 8].setNickName(_askValidInput("Enter nick name> "));
-	_phoneBook[i % 8].setPhone(_askValidInput("Enter phone"));
+	_phoneBook[i % 8].setPhone(_askValidInput("Enter phone> "));
 	_phoneBook[i % 8].setSecret(_askValidInput("Enter the darkest secret> "));
-	_numContact = i % 8;
+	_numContact++;
+	std::cout << _phoneBook[i % 8].getFirstName() << " added correctly :)" << std::endl;
 }
 
 void	PhoneBook::showPhoneBook(void) const
 {
 	int	i;
 
+	i = -1;
+	while (++i < 45)
+		std::cout << "-";
+	std::cout << std::endl;
+	std::cout << "|\t   --MY AWESOME PHONEBOOK--         |"<< std::endl;
 	i = -1;
 	while (++i < 45)
 		std::cout << "-";
@@ -93,13 +98,11 @@ void	PhoneBook::searchContact(void) const
 	showPhoneBook();
 	std::cout << "Enter the index> ";
 	std::cin >> entrade;
-	std::cout << std::endl;
 	while (entrade < 1 || entrade > _numContact)
 	{
-		std::cout << "Entrade out of range> ";
+		std::cout << "Entrade out of range :(" << std::endl;
 		std::cout << "Enter the index> ";
 		std::cin >> entrade;
-		std::cout << std::endl;
 	}
 	_phoneBook[entrade - 1].showContact();
 }
@@ -108,16 +111,20 @@ void	PhoneBook::startPhoneBook(void)
 {
 	std::string entrade;
 
-	std::cout << "--MY AWESOME PHONEBOOK--" << std::endl;
-	std::cout << "Enter a command > ";
+	std::cout << "\t--MY AWESOME PHONEBOOK--" << std::endl;
+	std::cout << "(ADD)    -> Save a new contact" << std::endl;
+	std::cout << "(SEARCH) -> Display a specific contact" << std::endl;
+	std::cout << "Enter a command> ";
 	std::cin >> entrade;
-	std::cout << std::endl;
 	while (entrade.compare("EXIT"))
 	{
-		if (entrade.compare("ADD") == 0)
+		if (!entrade.compare("ADD"))
 			addContact();
-		else if (entrade.compare("SEARCH") == 0)
+		else if (!entrade.compare("SEARCH"))
 			searchContact();
+		else
+			std::cout << "Enter a valid command" << std::endl;
+		std::cout << "Enter a command> ";
 		std::cin >> entrade;
 	}
 }
